@@ -3,4 +3,6 @@
     <string name="hello">Hello World, CityBus!</string>
     <string name="app_name">CityBus</string>
     <string name="quit">Выйти</string>
+    <string name="satellite">Спутниковый вид</string>
+    <string name="shematic">Схематичный вид</string>
 </resources>

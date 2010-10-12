@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
@@ -19,6 +20,9 @@ public class CityBus extends MapActivity {
         setContentView(R.layout.main);
         MapView mapView = (MapView) findViewById(R.id.mapview);
         mapView.setBuiltInZoomControls(true);
+        
+        mapView.setLongClickable(true);
+        registerForContextMenu(mapView);
     }
     
     @Override
@@ -34,6 +38,21 @@ public class CityBus extends MapActivity {
       super.onCreateContextMenu(menu, v, menuInfo);
       MenuInflater inflater = getMenuInflater();
       inflater.inflate(R.menu.context_menu, menu);
+    }
+    
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+      AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+      switch (item.getItemId()) {
+      case R.id.satellite:
+    	/*Switch to satellite view*/
+        return true;
+      case R.id.shematic:
+    	  /*Switch to shematic view view*/
+        return true;
+      default:
+        return super.onContextItemSelected(item);
+      }
     }
     
     @Override
